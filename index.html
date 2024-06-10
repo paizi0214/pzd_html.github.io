@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html itemscope itemtype='http://schema.org/WebPage' lang='zh-CN' xmlns:fb='https://www.facebook.com/2008/fbml' xmlns:og='http://ogp.me/ns#' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <title>排孜来提作业 | 示例网页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .content {
+            padding: 50px;
+            font-size: 24px;
+        }
+        .ad-banner {
+            position: fixed;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            background-color: red;
+            color: yellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 9999;
+            border: 2px solid yellow;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        .ad-banner .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 0, 0.7); /* 半透明 */
+            color: red;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 5px;
+        }
+    </style>
+    <script>
+        let adClosed = false;
+
+        function closeAd(event) {
+            event.stopPropagation(); // 阻止事件冒泡
+            document.getElementById('ad-banner').style.display = 'none';
+            adClosed = true;
+        }
+
+        function showAdMessage() {
+            if (!adClosed) {
+                alert('这是广告');
+                setTimeout(() => {
+                    if (!adClosed) {
+                        document.getElementById('ad-banner').style.display = 'flex';
+                    }
+                }, 5000);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <h1>排孜来提作业</h1>
+        <p>这是一个示例网页，展示了如何添加广告功能。</p>
+    </div>
+
+    <div class="ad-banner" id="ad-banner" onclick="showAdMessage()">
+        这是广告
+        <button class="close-btn" onclick="closeAd(event)">关闭</button>
+    </div>
+</body>
+</html>
